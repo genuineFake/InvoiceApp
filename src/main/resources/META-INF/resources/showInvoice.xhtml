@@ -1,0 +1,57 @@
+<ui:composition template="template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <ui:define name="title">
+        Invoice
+    </ui:define>
+
+    <ui:define name="center">
+
+        <h:form>
+            <p:messages id="messages" showDetail="true" autoUpdate="true"
+                        closable="true" />
+            <p:panel id="basic" header="Book details" style="margin-bottom:20px">
+                <h:panelGrid id="grid" columns="3" cellpadding="5">
+                    <h:outputLabel for="InvoiceId" value="Invoice Id"></h:outputLabel>
+                    <h:inputText id="InvoiceId" value="#{addNewInvoice.newInvoiceDetails.invoiceId}">
+
+                    </h:inputText>
+                    <p:message for="InvoiceId" />
+                    <h:outputLabel for="InvoiceDate"
+                                   value="Invoice Date (YYY-MM-DD)"></h:outputLabel>
+
+                    <h:inputText id="InvoiceDate"
+                                 value="#{addNewInvoice.newInvoiceDetails.date}"
+                                 converterMessage="Use format YYYY-MM-DD">
+                        <f:convertDateTime pattern="yyyy-M-d" />
+                    </h:inputText>
+                    <p:message for="InvoiceDate" />
+
+                    <h:outputLabel for="InvoiceCompany" value="Company"></h:outputLabel>
+                    <h:inputText id="InvoiceCompany" value="#{addNewInvoice.newInvoiceDetails.company}">
+
+                    </h:inputText>
+                    <p:message for="InvoiceCompany" />
+
+                    <h:outputLabel for="InvoiceRecipient" value="Recipient"></h:outputLabel>
+                    <h:inputText id="InvoiceRecipient" value="#{addNewInvoice.newInvoiceDetails.recipient}">
+
+                    </h:inputText>
+                    <p:message for="InvoiceRecipient" />
+
+                </h:panelGrid>
+
+                <h:commandButton action="#{addNewInvoice.addNew}" value="Add new"></h:commandButton>
+            </p:panel>
+        </h:form>
+
+
+    </ui:define>
+
+
+</ui:composition>
+
