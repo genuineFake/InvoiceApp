@@ -1,25 +1,24 @@
 package org.genuinefake.repositories;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
-/**
- * Created by fnord on 17.3.4.
- */
-//@Entity
-public class Item {
+@Entity
+@Table(name = "ITEMS")
+public class Item implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ITEM_ID")
     private int itemId;
+    @Column(name = "NAME")
     private String name;
+    @Column(name = "AMOUNT")
     private int amount;
+    @Column(name = "PRICE")
     private int price;
+    @Column(name = "UNITS")
     private String units;
-
-    private InvoiceDetails invoice;
 
 
     public Item() {
@@ -67,4 +66,14 @@ public class Item {
     public String toString() {
         return name + " , " + amount + " , " + price + " , " + units;
     }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
+
 }

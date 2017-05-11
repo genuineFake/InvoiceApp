@@ -2,27 +2,27 @@ package org.genuinefake.repositories;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
-/**
- * Created by fnord on 17.3.4.
- */
-
-//@Entity
+@Entity
 @Table(name = "INVOICES")
-public class InvoiceDetails {
+public class InvoiceDetails implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "INVOICE_ID")
     private int invoiceId;
-
+    @Column(name = "DATE")
     private String date;
+    @Column(name = "COMPANY")
     private String company;
+    @Column(name = "RECIPIENT")
     private String recipient;
-//    @OneToMany(mappedBy = "invoice")
-//    @JoinTable(name = "INVOICE_ITEMS", joinColumns = @JoinColumn(name = "INVOICE_ID"), inverseJoinColumns = @JoinColumn(name = "ITEM_ID"))
-//    private Collection<Item> items = new ArrayList<>();
-
-
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "INVOICE_ID", nullable = false)
+    private List<Item> itemList = new ArrayList<>();
 
 
     public InvoiceDetails() {
@@ -70,4 +70,11 @@ public class InvoiceDetails {
         this.recipient = recipient;
     }
 
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
+    }
 }
