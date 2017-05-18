@@ -11,21 +11,21 @@
             <p:panel header="Invoice Details">
                 <h:panelGrid columns="1">
                     <h:outputLabel for="InvoiceId" value="Invoice Id"/>
-                    <!--@elvariable id="productController" type=""-->
-                    <h:inputText id="InvoiceId" value=""/>
+                    <!--@elvariable id="invoiceController" type="org.genuinefake.controllers.InvoiceController"-->
+                    <h:inputText id="InvoiceId" value="#{invoiceController.invoiceDetails.invoiceId}"/>
                     <h:outputLabel for="InvoiceDate"
                                    value="Invoice Date (YYY-MM-DD)"/>
                     <h:inputText id="InvoiceDate"
-                                 value=""
+                                 value="#{invoiceController.invoiceDetails.date}"
                                  converterMessage="Use format YYYY-MM-DD">
                         <f:convertDateTime pattern="yyyy-M-d"/>
                     </h:inputText>
                     <h:outputLabel for="InvoiceCompany" value="Company"/>
-                    <h:inputText id="InvoiceCompany" value=""/>
+                    <h:inputText id="InvoiceCompany" value="#{invoiceController.invoiceDetails.company}"/>
                     <p:message for="InvoiceCompany"/>
                     <h:outputLabel for="InvoiceRecipient" value="Recipient"/>
-                    <h:inputText id="InvoiceRecipient" value=""/>
-                    <h:commandButton value="Save" action=""/>
+                    <h:inputText id="InvoiceRecipient" value="#{invoiceController.invoiceDetails.recipient}"/>
+                    <h:commandButton value="Save" action="#{invoiceController.save}"/>
                 </h:panelGrid>
             </p:panel>
         </h:form>

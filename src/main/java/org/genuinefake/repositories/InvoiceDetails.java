@@ -77,4 +77,6 @@ public class InvoiceDetails implements Serializable {
     public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
     }
+
+
 }
