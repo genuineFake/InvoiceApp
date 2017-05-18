@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="layout.xhtml">
+    <ui:define name="content">
+        <h:form id="invoiceForm">
+            <p:panel header="Invoice Details">
+                <h:panelGrid columns="1">
+                    <h:outputLabel for="InvoiceId" value="Invoice Id"/>
+                    <!--@elvariable id="productController" type=""-->
+                    <h:inputText id="InvoiceId" value=""/>
+                    <h:outputLabel for="InvoiceDate"
+                                   value="Invoice Date (YYY-MM-DD)"/>
+                    <h:inputText id="InvoiceDate"
+                                 value=""
+                                 converterMessage="Use format YYYY-MM-DD">
+                        <f:convertDateTime pattern="yyyy-M-d"/>
+                    </h:inputText>
+                    <h:outputLabel for="InvoiceCompany" value="Company"/>
+                    <h:inputText id="InvoiceCompany" value=""/>
+                    <p:message for="InvoiceCompany"/>
+                    <h:outputLabel for="InvoiceRecipient" value="Recipient"/>
+                    <h:inputText id="InvoiceRecipient" value=""/>
+                    <h:commandButton value="Save" action=""/>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
