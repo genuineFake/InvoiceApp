@@ -1,9 +1,11 @@
 package org.genuinefake.repositories;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
-
+@Data
 @Entity
 @Table(name = "ITEMS")
 public class Item implements Serializable {
@@ -19,61 +21,5 @@ public class Item implements Serializable {
     private int price;
     @Column(name = "UNITS")
     private String units;
-
-
-    public Item() {
-    }
-
-    public Item(String name, int amount, int price, String units) {
-        this.name = name;
-        this.amount = amount;
-        this.price = price;
-        this.units = units;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getUnits() {
-        return units;
-    }
-
-    public void setUnits(String units) {
-        this.units = units;
-    }
-
-    public String toString() {
-        return name + " , " + amount + " , " + price + " , " + units;
-    }
-
-    public int getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
-    }
-
 
 }
