@@ -17,7 +17,7 @@
                 <p:panel id="basic" header="Book details" style="margin-bottom:20px">
                     <h:panelGrid id="grid" columns="3" cellpadding="5">
                         <h:outputLabel for="InvoiceId" value="Invoice Id"></h:outputLabel>
-                        <h:inputText id="InvoiceId" value="">
+                        <h:inputText id="InvoiceId" value="#{invoiceController.}">
 
                         </h:inputText>
                         <p:message for="InvoiceId" />
@@ -45,7 +45,7 @@
 
                     </h:panelGrid>
 
-                    <h:commandButton action="index" value="Add new"></h:commandButton>
+                    <h:commandButton action="#{invoiceController.save()}" value="Add new"></h:commandButton>
                 </p:panel>
             </h:form>
 

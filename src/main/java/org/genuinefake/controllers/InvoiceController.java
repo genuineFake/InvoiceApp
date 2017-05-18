@@ -1,6 +1,8 @@
 package org.genuinefake.controllers;
 
 import org.genuinefake.repositories.InvoiceDetails;
+import org.genuinefake.repositories.dao.InvoiceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -13,38 +15,34 @@ import java.util.List;
 @Component
 public class InvoiceController implements Serializable {
 
-    private CurrentInvoiceData currentInvoice;
-    ;
+    private InvoiceDetails invoiceDetails;
+    @Autowired
+    private InvoiceRepository invoiceRepository;
 
 
     public String delete(InvoiceDetails invoiceDetails) {
+        invoiceRepository.delete(invoiceDetails);
 
-        return "invoices.xhtml?faces-redirect = true";
+        return "/invoices.xhtml?faces-redirect = true";
     }
 
     public String save() {
+        invoiceRepository.save(invoiceDetails);
+        invoiceDetails = new InvoiceDetails();
 
 
-        currentInvoice.setCurrentInvoiceDetails(new InvoiceDetails()); // clear the form values
-
-        return "invoices.xhtml";
+        return "/invoices.xhtml?faces-redirect = true";
     }
 
     public String update(InvoiceDetails invoice) {
-        currentInvoice = new CurrentInvoiceData(invoice);
-        return "";
+
+        return "/invoices.xhtml?faces-redirect = true";
     }
 
     public List<InvoiceDetails> getInvoiceList() {
-        return null;
+
+        return (List<InvoiceDetails>) invoiceRepository.findAll();
     }
 
-    public CurrentInvoiceData getCurrentInvoice() {
-        return currentInvoice;
-    }
-
-    public void setCurrentInvoice(CurrentInvoiceData currentInvoice) {
-        this.currentInvoice = currentInvoice;
-    }
 
 }
