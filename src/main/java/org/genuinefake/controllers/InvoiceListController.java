@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * Created by fnord on 17.5.18.
  */
-@Component
-@Scope(ScopeName.VIEW)
+@Component(value = "invoiceList")
+@Scope(ScopeName.SESSION)
 public class InvoiceListController {
     @Autowired
     private InvoiceRepository invoiceRepository;
@@ -22,7 +22,7 @@ public class InvoiceListController {
 
     public List<InvoiceDetails> getInvoices() {
 
-        return (List<InvoiceDetails>) invoiceRepository.findAll();
+        return invoiceRepository.findAll();
 
     }
 }

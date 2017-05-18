@@ -18,7 +18,7 @@ import java.util.List;
 @Scope(ScopeName.VIEW)
 public class InvoiceController implements Serializable {
 
-    private InvoiceDetails invoiceDetails;
+    private InvoiceDetails invoiceDetails = new InvoiceDetails();
     @Autowired
     private InvoiceRepository invoiceRepository;
 
@@ -26,20 +26,19 @@ public class InvoiceController implements Serializable {
     public String delete(InvoiceDetails invoiceDetails) {
         invoiceRepository.delete(invoiceDetails);
 
-        return "/invoices.xhtml?faces-redirect = true";
+        return "/invoice-list.xhtml?faces-redirect = true";
     }
 
     public String save() {
         invoiceRepository.save(invoiceDetails);
         invoiceDetails = new InvoiceDetails();
 
-
-        return "/invoices.xhtml?faces-redirect = true";
+        return "/invoice-list.xhtml?faces-redirect = true";
     }
 
     public String update(InvoiceDetails invoice) {
 
-        return "/invoices.xhtml?faces-redirect = true";
+        return "/invoice-list.xhtml?faces-redirect = true";
     }
 
     public List<InvoiceDetails> getInvoiceList() {
